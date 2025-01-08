@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# my_app
-=======
 # my-app
 
 ## Project setup
@@ -25,4 +22,4 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
->>>>>>> 7105232 (init)
+
