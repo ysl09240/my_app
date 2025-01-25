@@ -11,13 +11,13 @@
       </el-breadcrumb>
     </div>
     <div class="r-content">
-      <el-dropdown>
+      <el-dropdown @command="handleCommand">
         <span class="el-dropdown-link">
           <img class="userimg" src="../assets/images/userimg.png">
         </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>个人中心</el-dropdown-item>
-          <el-dropdown-item>退出</el-dropdown-item>
+          <el-dropdown-item command="logout">退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -26,6 +26,7 @@
 
 <script>
 import { mapState } from "vuex";
+import Cookie from "js-cookies";
 
 export default {
   data() {
@@ -34,6 +35,15 @@ export default {
   methods: {
     handleMenu() {
       this.$store.commit("collapseMenu");
+    },
+    handleCommand(command){
+      if(command ==="logout"){
+        //清除token
+        Cookie.removeItem("token");
+        //清除Cookie中的menu
+        Cookie.removeItem("menu");
+        this.$router.push("/login");
+      }
     }
   },
   computed: {
